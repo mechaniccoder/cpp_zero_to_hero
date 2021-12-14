@@ -139,10 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Employee.cpp" />
-    <ClCompile Include="EmployeeTest.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Database.h" />
     <ClInclude Include="Employee.h" />
   </ItemGroup>
