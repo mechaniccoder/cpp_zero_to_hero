@@ -50,3 +50,29 @@ void notLeaky() {
     auto mySimplePtr = make_unique<Simple>();
     mySimplePtr->go();
 }
+
+// unique pointer
+mySimpleSmartPtr->go();
+
+void processData(Simple* simple)
+auto mySimpleSmartPtr = make_unique<Simple>();
+processData(mySimpleSmartPtr.get());
+
+mySimpleSmartPtr.reset();
+mySimpleSmartPtr.reset(new Simple());
+
+//release
+Simple* simple = mySimpleSmartPtr.release(); // return internal pointer wrapped by smart pointer
+delete simple;
+simple = nullptr;
+
+// move
+class Foo {
+    public:
+        Foo(unique_ptr<int> data) : mData(move(data)) {}
+    private:
+        unique_ptr<int> mData;
+}
+
+auto myIntSmartPtr = make_unique<int>(42);
+Foo f(move(myIntSmartPtr));
