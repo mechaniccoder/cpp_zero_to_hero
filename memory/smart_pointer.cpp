@@ -19,3 +19,46 @@ int main() {
     return 0;
 }
 
+// shared pointer
+// shared pointer를 생성할때는 make_shared를 사용하자.
+auto mySimpleSmartPtr = make_shared<int>();
+
+// 커스텀 제거자(free)의 타입을 템플릿 매개변수로 지정하지 않아도 된다.
+shared_ptr<int> myIntSmartPtr(malloc_int(42), free);
+
+// share pointer를 file pointer로 사용하는 예시이다.
+void CloseFile(FILE* filePtr) {
+    if (filePtr == nullptr) {
+        return;
+    }
+    fclose(filePtr);
+    cout << "File closed" << endl;
+}
+
+int main() {
+    FILE* f = fopen("data.txt", "w");
+    shared_ptr<FILE> filePtr(f, CloseFile);
+    if (filePtr == nullptr) {
+        cerr << "Error opneing file" << endl;
+    } else {
+        cout << "File opened" << endl;
+    }
+    return 0;
+}
+
+class Simple {
+
+};
+
+// smart pointer가 삭제되려할때 레퍼런스 카운팅이 각각 1이기 때문에 서로 mySimple객체를 삭제하려고 한다.(위험하다.)
+void doubleDelete() {
+    Simple* mySimple = new Simple();
+    shared_ptr<Simple> smartPtr1(mySimple);
+    shared_ptr<Simple> smartPtr2(mySimple);
+}
+
+void noDoubleDelete() {
+    Simple* mySimple = new Simple();
+    shared_ptr<Simple> smartPtr1(mySimple);
+    shared_ptr<Simple> smartPtr2(smartPtr1);
+}
