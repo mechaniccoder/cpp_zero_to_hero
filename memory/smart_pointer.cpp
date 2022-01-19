@@ -62,3 +62,26 @@ void noDoubleDelete() {
     shared_ptr<Simple> smartPtr1(mySimple);
     shared_ptr<Simple> smartPtr2(smartPtr1);
 }
+
+// aliasing
+class Foo {
+    public:
+        Foo(int value) : mData(value) {}
+        int mData;
+};
+
+auto foo = make_shared<Foo>(42);
+auto aliasing = shared_ptr<int>(foo, &foo -> mData);
+
+
+// 이동의미론 
+unique_ptr<Foo> create() {
+    auto ptr = make_unique<Foo>();
+    return ptr;
+}
+
+int main() {
+    unique_ptr<Foo> mySmartPtr1 = create();
+    auto mySmartPtr2 = create();
+    return 0;
+}
