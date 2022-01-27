@@ -9,6 +9,10 @@ SpreadSheetCell::SpreadSheetCell(string_view initialValue) {
     setValue(initialValue);
 }
 
+SpreadSheetCell::SpreadSheetCell() {
+    mValue = 0;
+}
+
 // 스코프지정 연산자
 void SpreadSheetCell::setValue(double inValue)
 {
@@ -63,4 +67,14 @@ void heapCtor() {
     auto smartCellp = make_unique<SpreadSheetCell>(4);
     SpreadSheetCell* myCellp = new SpreadSheetCell(5);
 
+}
+
+void stackDefaultCtor() {
+    SpreadSheetCell myCell;
+    // SpreadSheetCell myCell() => default ctor을 함수처럼 호출하면 안된다.
+}
+
+void heapDefaultCtor() {
+    SpreadSheetCell* myCell = new SpreadSheetCell();
+    SpreadSheetCell* myCell = new SpreadSheetCell;
 }
