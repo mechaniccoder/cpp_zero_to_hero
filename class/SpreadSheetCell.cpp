@@ -78,3 +78,21 @@ void heapDefaultCtor() {
     SpreadSheetCell* myCell = new SpreadSheetCell();
     SpreadSheetCell* myCell = new SpreadSheetCell;
 }
+
+void destroy() {
+    SpreadSheetCell* cellPtr1 = new SpreadSheetCell(4);
+    SpreadSheetCell* cellPtr1 = new SpreadSheetCell(5);
+    count << "cellPtr1: " << cellptr1->getValue() << endl;
+    delete cellPtr1;
+    cellPtr1 = nullptr;
+}
+
+// 대입 연산자
+void operator() {
+    SpreadSheetCell cell(4);
+    cell = cell; // 대입 연산자 실행
+}
+
+SpreadSheetCell& SpreadSheetCell::operator=(const SpreadSheetCell& rhs) {
+    if (this == &rhs)
+}

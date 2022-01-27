@@ -20,3 +20,4 @@ private:
     double stringToDouble(std::string_view inString) const;
     double mValue = 0;
 };
+
