@@ -4,7 +4,7 @@ using namespace std;
 // 스코프지정 연산자
 void SpreadSheetCell::setValue(double inValue)
 {
-    mValue = inValue;
+    this->value = inValue;
 }
 
 double SpreadSheetCell::getValue() const
