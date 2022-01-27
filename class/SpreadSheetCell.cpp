@@ -5,6 +5,10 @@ SpreadSheetCell::SpreadSheetCell(double initialValue) {
     setValue(initialValue);
 }
 
+SpreadSheetCell::SpreadSheetCell(string_view initialValue) {
+    setValue(initialValue);
+}
+
 // 스코프지정 연산자
 void SpreadSheetCell::setValue(double inValue)
 {
