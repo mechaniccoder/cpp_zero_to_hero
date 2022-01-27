@@ -5,6 +5,7 @@ class SpreadSheetCell
 {
 public:
     SpreadSheetCell() = default; // default ctor을 위해 default 키워드로 선언
+    SpreadSheetCell() = delete; // default ctor을 만들면 안되는 경우
     SpreadSheetCell(double initialValue);
     SpreadSheetCell(std::string_view initialValue);
 
